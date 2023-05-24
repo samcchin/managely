@@ -16,6 +16,14 @@ function createCard(name, description, pictureUrl, starts, ends,location) {
   }
 
 
+function createAlert(){
+    return `
+    <div class="alert alert-danger" role="alert">
+    Something went wrong, got an error in the response!
+    </div>`
+}
+
+
 window.addEventListener('DOMContentLoaded', async () => {
 
     const url = 'http://localhost:8000/api/conferences/';
@@ -24,9 +32,11 @@ window.addEventListener('DOMContentLoaded', async () => {
       const response = await fetch(url);
 
       if (!response.ok) {
-        // Figure out what to do when the response is bad
-        console.error('Something went wrong, got an error in the response!')
-      } else {
+        const alertHtml = createAlert();
+        const conferenceRow = document.getElementById('conference-row');
+        conferenceRow.innerHTML = alertHtml;
+      }
+      else {
         const data = await response.json();
         const conferenceRow = document.getElementById('conference-row');
 
@@ -66,7 +76,9 @@ window.addEventListener('DOMContentLoaded', async () => {
       }
     } catch (e) {
       // Figure out what to do if an error is raised
-      console.log(e)
+      const alertHtml = createAlert();
+      const conferenceRow = document.getElementById('conference-row');
+      conferenceRow.innerHTML = alertHtml;
 
     }
 
