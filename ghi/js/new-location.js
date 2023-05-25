@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch(url);
     if (response.ok){
         const data = await response.json();
+        console.log(data)
         const selectTag = document.getElementById('state')
         for (let state of data.states){
             const option = document.createElement('option');

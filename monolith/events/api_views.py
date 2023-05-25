@@ -232,7 +232,6 @@ def api_show_location(request, pk):
         )
 
 
-
 @require_http_methods(["GET"])
 def api_list_states(request):
     # Get the states from the database ordered by name
@@ -250,3 +249,21 @@ def api_list_states(request):
         # Append the dictionary to the list
         state_list.append(state_dictionary)
     return JsonResponse({"states": state_list})
+
+
+@require_http_methods(["GET"])
+def api_list_conferencelocation(request):
+    # Get the location from the database ordered by name
+    locations = Location.objects.order_by('name')
+    # Create an empty list named location_list
+    location_list = []
+    # For each location in the locations from the database
+    for location in locations:
+        # Create a dictionary that contains the id and name
+        location_dictionary = {
+            'id': location.pk,
+            'name': location.name,
+         }
+        # Append the dictionary to the list
+        location_list.append(location_dictionary)
+    return JsonResponse({"locations": location_list})
