@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'djwto',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,15 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Sets how djwto should process the tokens
+# the access token is divided in two parts, one regular token and
+# another part containing a base64 encoded representation
+DJWTO_MODE = "TWO-COOKIES"
+
+# indicates for how long the access token should be valid
+DJWTO_ACCESS_TOKEN_LIFETIME = None
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+CORS_ALLOW_CREDENTIALS = True

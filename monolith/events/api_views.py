@@ -267,3 +267,20 @@ def api_list_conferencelocation(request):
         # Append the dictionary to the list
         location_list.append(location_dictionary)
     return JsonResponse({"locations": location_list})
+
+
+@require_http_methods(["GET"])
+def api_list_conferences_form(request):
+    # Get the location from the database ordered by name
+    conferences = Conference.objects.order_by('name')
+    # Create an empty list named location_list
+    conference_list = []
+    # For each location in the locations from the database
+    for conference in conferences:
+        # Create a dictionary that contains the id and name
+        conference_dictionary = {
+            'name': conference.name,
+         }
+        # Append the dictionary to the list
+        conference_list.append(conference_dictionary)
+    return JsonResponse({"conferences": conference_list})
