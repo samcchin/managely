@@ -15,12 +15,12 @@ if (payloadCookie) {
 
     // Check if "events.add_conference" is in the permissions.
     // If it is, remove 'd-none' from the link
-    if (      .includes('events.add_conference')){
+    if (payload.pemissions.includes('events.add_conference')){
         const conferenceNavTag = document.getElementById('nav-conference')
         conferenceNavTag.classList.remove('d-none')
     }
 
-    if (   .includes('events.add_location')){
+    if (payload.permissions.includes('events.add_location')){
         const locationNavTag = document.getElementById('nav-location')
         locationNavTag.classList.remove('d-none')
     }
