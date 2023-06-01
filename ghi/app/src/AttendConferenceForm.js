@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-function AttendeeForm(props){
+function AttendConferenceForm(props){
     const [conferences, setConferences] = useState([]);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [conference, setConference] = useState('');
+    const [hasSignedUp, setHasSignedUp] = useState(false)
 
     const handleNameChange = (event) => {
         const value = event.target.value;
@@ -38,16 +39,13 @@ function AttendeeForm(props){
         }
 
         const response = await fetch(attendeeUrl, fetchConfig);
-
         if (response.ok){
             const newAttendee = await response.json();
             console.log(newAttendee);
-
             setName('');
             setEmail('');
             setConference('');
-
-
+            setHasSignedUp(true)
         }
 
 
@@ -60,10 +58,12 @@ function AttendeeForm(props){
         dropdownClasses = 'form-select';
     }
 
-    // let successMessage = 'alert alert-success d-none mb-0'
-    // let formTag = 'create-attendee-form'
-    // successMessage = 'alert alert-success mb-0'
-    // formTag='create-attendee-form d-none'
+    let messageClasses = 'alert alert-success d-none mb-0';
+    let formClasses = '';
+    if (hasSignedUp) {
+      messageClasses = 'alert alert-success mb-0';
+      formClasses = 'd-none';
+    }
 
     const selectTag = document.getElementById('conference')
     const fetchData = async () => {
@@ -83,7 +83,7 @@ function AttendeeForm(props){
 
     return (
         <>
-        <div className="my-5">
+        <div className="my-5 container">
       <div className="row">
         <div className="col col-sm-auto">
           <img width="300" className="bg-white rounded shadow d-block mx-auto mb-4" src="/logo.svg"/>
@@ -91,7 +91,7 @@ function AttendeeForm(props){
         <div className="col">
           <div className="card shadow">
             <div className="card-body">
-              <form onSubmit={handleSubmit} id="create-attendee-form">
+              <form className={formClasses} onSubmit={handleSubmit} id="create-attendee-form">
                 <h1 className="card-title">It's Conference Time!</h1>
                 <p className="mb-3">
                   Please choose which conference
@@ -143,7 +143,7 @@ function AttendeeForm(props){
                 </div>
                 <button className="btn btn-lg btn-primary">I'm going!</button>
               </form>
-              <div className="alert alert-success d-none mb-0" id="success-message">
+              <div className={messageClasses} id="success-message">
                 Congratulations! You're all signed up!
               </div>
             </div>
@@ -156,4 +156,4 @@ function AttendeeForm(props){
 }
 
 
-export default AttendeeForm;
+export default AttendConferenceForm;

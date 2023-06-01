@@ -22,18 +22,18 @@
               <a class="nav-link" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a id='nav-location' class="nav-link d-none" aria-current="page" href="new-location.html">New location</a>
+              <a class="nav-link d-none" aria-current="page" href="new-location.html">New location</a>
             </li>
             <li class="nav-item">
-                <a id='nav-conference' class="nav-link d-none" aria-current="page" href="new-conference.html">New conference</a>
+              <a class="nav-link d-none" aria-current="page" href="new-conference.html">New conference</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="new-presentation.html">New presentation</a>
+              <a class="nav-link active" aria-current="page" href="new-presentation.html">New presentation</a>
             </li>
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search conferences" aria-label="Search">
-            <button class="btn btn-outline-success me-2" type="submit">Search</button>
+            <button class="btn btn-outline-success" type="submit">Search</button>
             <a class="btn btn-primary" href="attend-conference.html">Attend!</a>
           </form>
         </div>
@@ -60,19 +60,19 @@
                 <label for="company_name">Company name</label>
               </div>
               <div class="form-floating mb-3">
-                <input placeholder="Title" type="text" name="title" id="title" class="form-control">
+                <input placeholder="Title" required type="text" name="title" id="title" class="form-control">
                 <label for="title">Title</label>
               </div>
               <div class="mb-3">
-                <label for="Synopsis" class="form-label">Synopsis</label>
-                <textarea class="form-control" name="synopsis" id="synopsis" rows="3"></textarea>
+                <label for="synopsis">Synopsis</label>
+                <textarea class="form-control" id="synopsis" rows="3" name="synopsis" class="form-control"></textarea>
               </div>
               <div class="mb-3">
-                <select required id="conference" name="conference" class="form-select">
+                <select required name="conference" id="conference" class="form-select">
                   <option selected value="">Choose a conference</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-primary">Create</button>
+              <button class="btn btn-primary">Create</button>
             </form>
           </div>
         </div>
