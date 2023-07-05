@@ -59,10 +59,3 @@ function App(props) {
 }
 
 export default App;
-  // <AttendConferenceForm />;
-    /* <ConferenceForm /> */
-
-    /* <LocationForm /> */
-
-
-    /* <AttendeesList attendees={props.attendees} /> */

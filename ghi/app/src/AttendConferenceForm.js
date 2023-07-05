@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Image from './conference-image2.png';
 
 function AttendConferenceForm(props){
     const [conferences, setConferences] = useState([]);
@@ -86,7 +87,7 @@ function AttendConferenceForm(props){
         <div className="my-5 container">
       <div className="row">
         <div className="col col-sm-auto">
-          <img width="300" className="bg-white rounded shadow d-block mx-auto mb-4" src="/logo.svg"/>
+          <img width="250" className="bg-white rounded shadow d-block mx-auto mb-4 border-white" src={Image}/>
         </div>
         <div className="col">
           <div className="card shadow">

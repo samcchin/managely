@@ -12,10 +12,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         option.innerHTML = conference.name;
         selectTag.appendChild(option);
     }
-    // Here, add the 'd-none' class to the loading icon
     const loadingIcon = document.getElementById('loading-conference-spinner')
     loadingIcon.classList.add('d-none')
-    // Here, remove the 'd-none' class from the select tag
     selectTag.classList.remove('d-none')
 
     const formTag = document.getElementById('create-attendee-form');
@@ -36,7 +34,6 @@ window.addEventListener('DOMContentLoaded', async () => {
             formTag.reset();
             const newAttendee = await response.json();
             console.log(newAttendee)
-            // Here, remove the 'd-none' class from the success-message id tag
             formTag.classList.add('d-none')
             const successMessage = document.getElementById('success-message')
             successMessage.classList.remove('d-none')

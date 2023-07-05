@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from './managely_logo.png';
+
 
 function ConferenceColumn(props) {
   return (
@@ -36,25 +38,15 @@ function MainPage({ conferences }) {
   useEffect(() => {
     async function getConferenceDetails() {
       try {
-          // Create a list of for all the requests and
-          // add all of the requests to it
           const requests = [];
           for (let conference of conferences) {
             const detailUrl = `http://localhost:8000${conference.href}`;
             requests.push(fetch(detailUrl));
           }
 
-          // Wait for all of the requests to finish
-          // simultaneously
           const responses = await Promise.all(requests);
-
-          // Set up the "columns" to put the conference
-          // information into
           const conferenceColumns = [[], [], []];
 
-          // Loop over the conference detail responses and add
-          // each to to the proper "column" if the response is
-          // ok
           let i = 0;
           for (const conferenceResponse of responses) {
             if (conferenceResponse.ok) {
@@ -69,8 +61,6 @@ function MainPage({ conferences }) {
             }
           }
 
-          // Set the state to the new list of three lists of
-          // conferences
           setConferenceColumns(conferenceColumns);
         } catch (e) {
         console.error(e);
@@ -82,10 +72,10 @@ function MainPage({ conferences }) {
   return (
     <>
       <div className="px-4 py-5 my-5 mt-0 text-center bg-info">
-        <img className="bg-white rounded shadow d-block mx-auto mb-4" src="/logo.svg" alt="" width="600" />
-        <h1 className="display-5 fw-bold">Conference GO!</h1>
+        <img className="logo" src={Logo} alt="" width="500" height="130" />
+        {/* <h1 className="display-5 fw-bold mainpage-title">managely</h1> */}
         <div className="col-lg-6 mx-auto">
-          <p className="lead mb-4">
+          <p className="lead mb-4 mainpage-subtitle">
             The only resource you'll ever need to plan an run your in-person or
             virtual conference for thousands of attendees and presenters.
           </p>
